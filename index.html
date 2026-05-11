@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veloura Perfume</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0f0f0f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* Navbar */
+
+    nav{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(8px);
+    }
+
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:700;
+      color:#d4af37;
+      letter-spacing:2px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:16px;
+    }
+
+    .nav-links a:hover{
+      color:#d4af37;
+    }
+
+    /* Hero */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:
+      linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      padding:120px 0 80px;
+    }
+
+    .hero-content{
+      max-width:650px;
+    }
+
+    .hero-content h1{
+      font-size:clamp(2.5rem,6vw,5rem);
+      line-height:1.2;
+      margin-bottom:25px;
+    }
+
+    .hero-content h1 span{
+      color:#d4af37;
+    }
+
+    .hero-content p{
+      color:#ddd;
+      line-height:1.9;
+      margin-bottom:35px;
+      font-size:1rem;
+      max-width:550px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 38px;
+      border-radius:50px;
+      background:#d4af37;
+      color:#000;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:white;
+    }
+
+    /* Features */
+
+    section{
+      padding:90px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:clamp(2rem,4vw,3rem);
+      color:#d4af37;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#bbb;
+    }
+
+    .features{
+      background:#151515;
+    }
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .feature-card{
+      background:#1e1e1e;
+      padding:40px 30px;
+      border-radius:20px;
+      transition:0.3s;
+      text-align:center;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .feature-card h3{
+      color:#d4af37;
+      margin:20px 0;
+      font-size:24px;
+    }
+
+    .feature-card p{
+      color:#ccc;
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    /* Products */
+
+    .products{
+      background:#0f0f0f;
+    }
+
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .product-card{
+      background:#1b1b1b;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.3s;
+    }
+
+    .product-card:hover{
+      transform:scale(1.03);
+    }
+
+    .product-image{
+      height:350px;
+      overflow:hidden;
+    }
+
+    .product-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .product-info{
+      padding:25px;
+    }
+
+    .product-info h3{
+      font-size:28px;
+      color:#d4af37;
+      margin-bottom:10px;
+    }
+
+    .product-info p{
+      color:#ccc;
+      line-height:1.7;
+      margin-bottom:15px;
+      font-size:15px;
+    }
+
+    .price{
+      font-size:24px;
+      font-weight:700;
+    }
+
+    /* CTA */
+
+    .cta{
+      background:
+      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      text-align:center;
+    }
+
+    .cta h2{
+      font-size:clamp(2rem,5vw,4rem);
+      margin-bottom:20px;
+    }
+
+    .cta p{
+      color:#ddd;
+      max-width:700px;
+      margin:auto;
+      margin-bottom:35px;
+      line-height:1.8;
+    }
+
+    /* Footer */
+
+    footer{
+      background:#000;
+      text-align:center;
+      padding:25px;
+      color:#888;
+      font-size:14px;
+    }
+
+    /* Responsive */
+
+    @media(max-width:768px){
+
+      .nav-content{
+        flex-direction:column;
+        gap:18px;
+      }
+
+      .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+      }
+
+      .hero{
+        text-align:center;
+      }
+
+      .hero-content{
+        margin:auto;
+      }
+
+      .hero-content p{
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+    }
+
+    @media(max-width:480px){
+
+      .btn{
+        width:100%;
+        text-align:center;
+      }
+
+      .product-image{
+        height:280px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+
+  <nav>
+    <div class="container nav-content">
+
+      <div class="logo">VELOURA</div>
+
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- Hero -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <h1>
+          Discover the Art of
+          <span>Luxury Fragrance</span>
+        </h1>
+
+        <p>
+          Experience premium perfumes crafted with elegance,
+          long-lasting notes, and unforgettable scents designed
+          to elevate your personality and confidence.
+        </p>
+
+        <a href="#" class="btn">Shop Now</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Features -->
+
+  <section class="features" id="features">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Why Choose Us</h2>
+        <p>Luxury fragrances made for modern lifestyles</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <h3>Premium Quality</h3>
+
+          <p>
+            Crafted with the finest ingredients and luxurious
+            perfume oils for a rich and elegant experience.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Long Lasting</h3>
+
+          <p>
+            Our perfumes are designed to stay fresh and powerful
+            throughout your entire day.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Elegant Design</h3>
+
+          <p>
+            Beautifully designed bottles that reflect class,
+            luxury, and timeless sophistication.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Products -->
+
+  <section class="products" id="products">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Best Sellers</h2>
+        <p>Explore our most loved fragrances</p>
+      </div>
+
+      <div class="products-grid">
+
+        <div class="product-card">
+
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1200&auto=format&fit=crop">
+          </div>
+
+          <div class="product-info">
+
+            <h3>Royal Oud</h3>
+
+            <p>
+              A bold blend of oud, amber, and warm spices
+              for a truly luxurious scent.
+            </p>
+
+            <div class="price">$120</div>
+
+          </div>
+
+        </div>
+
+        <div class="product-card">
+
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=1200&auto=format&fit=crop">
+          </div>
+
+          <div class="product-info">
+
+            <h3>Black Essence</h3>
+
+            <p>
+              Deep oriental fragrance with notes of vanilla,
+              musk, and smoky woods.
+            </p>
+
+            <div class="price">$95</div>
+
+          </div>
+
+        </div>
+
+        <div class="product-card">
+
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?q=80&w=1200&auto=format&fit=crop">
+          </div>
+
+          <div class="product-info">
+
+            <h3>Golden Touch</h3>
+
+            <p>
+              Fresh, modern, and sophisticated fragrance
+              designed for everyday elegance.
+            </p>
+
+            <div class="price">$110</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta" id="contact">
+
+    <div class="container">
+
+      <h2>Your Signature Scent Awaits</h2>
+
+      <p>
+        Join thousands of fragrance lovers who trust Veloura
+        for luxury, elegance, and unforgettable perfume experiences.
+      </p>
+
+      <a href="#" class="btn">Contact Us</a>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+    © 2026 Veloura Perfume. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
